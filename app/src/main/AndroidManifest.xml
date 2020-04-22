@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.infs3605projecttest4">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/noongar"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/noongar"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.PairsActivity"></activity>
+        <activity android:name=".activity.SentenceActivity" />
+        <activity android:name=".activity.TextActivity" />
+        <activity android:name=".activity.SelectActivity" />
+        <activity android:name=".activity.PictionaryActivity" />
+        <activity
+            android:name=".activity.WelcomActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name" />
+    </application>
+
+</manifest>
