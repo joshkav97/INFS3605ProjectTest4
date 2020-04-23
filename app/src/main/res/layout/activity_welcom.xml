@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="8dp"
-        android:text="Welcome!"
+        android:text="NativeNow"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toTopOf="@+id/wel_welcomeImage"
         app:layout_constraintEnd_toEndOf="parent"

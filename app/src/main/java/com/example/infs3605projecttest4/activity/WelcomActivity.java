@@ -32,6 +32,15 @@ public class WelcomActivity extends AppCompatActivity {
         final Intent instant = new Intent(this, MainActivity.class);
         im.setImageResource(R.drawable.welcome);
 
+        Timer timer = new Timer();
+        TimerTask tast = new TimerTask() {
+            @Override
+            public void run() {
+                startActivity(instant);
+            }
+        };
+        timer.schedule(tast, 2000);
+
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,17 +53,9 @@ public class WelcomActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("databaseCreate",MODE_PRIVATE);
 
-
-
-       // insert the alphabets into database
-       // Warehouse.insertAllDataIntoDatabase();
-
-
-
         // get data from database
         Warehouse.setAllData(sharedPreferences);
-
-
-
     }
+
+
 }

@@ -22,7 +22,7 @@ public class Warehouse {
     private static ArrayList<Alphabet> alphabetArrayList = null;
     private static ArrayList<Word> wordsByCurrType = null;
     private static Word serWord = null;
-    private static List<Word> words = null;
+    private static List<Word> serWordList = null;
     private static Map<String, TestType> typesMap = new HashMap<>();
 
     public static void startDatabase(final Context context) {
@@ -53,7 +53,7 @@ public class Warehouse {
                 // set the types map
                 typesMap.put("Family", new TestType("Family"));
                 typesMap.put("Adjective", new TestType("Adjective"));
-                typesMap.put("animal", new TestType("animal"));
+                typesMap.put("Animal", new TestType("Animal"));
                 typesMap.put("Body Part", new TestType("Body Part"));
                 typesMap.put("Colour", new TestType("Colour"));
                 typesMap.put("Conversation", new TestType("Conversation"));
@@ -125,26 +125,21 @@ public class Warehouse {
         return typesMap;
     }
 
-    public static Word searchWordByEnglish(final String english) {
+    public static List<Word> searchAllWords() {
         new Thread() {
             public void run() {
-                serWord = db.wordDao().getWordsByEnglish(english);
+                serWordList = db.wordDao().getWords();
             }
         }.start();
+        return serWordList;
+    }
+
+    public static void setSerWord(Word serWord) {
+        Warehouse.serWord = serWord;
+    }
+
+    public static Word getSerWord() {
         return serWord;
-    }
-
-    public static List<Word> getWords() {
-        new Thread() {
-            public void run() {
-                words = db.wordDao().getWords();
-            }
-        }.start();
-        return words;
-    }
-
-    public void setWords(List<Word> words){
-        this.words = words;
     }
 
 
@@ -166,30 +161,30 @@ public class Warehouse {
         db.wordDao().insertWord(new Word(129, "Itchy", R.drawable.itchy, "Nyindee", "Adjective"));
         db.wordDao().insertWord(new Word(140, "Weak", R.drawable.weak, "Weern", "Adjective"));
         db.wordDao().insertWord(new Word(137, "Big", R.drawable.big, "Wappalyung", "Adjective"));
-        db.wordDao().insertWord(new Word(9, "Pig", R.drawable.pig, "Beark", "animal"));
-        db.wordDao().insertWord(new Word(16, "Ant", R.drawable.ant, "Bidit", "animal"));
-        db.wordDao().insertWord(new Word(17, "Gecko", R.drawable.gecko, "Bidjul", "animal"));
-        db.wordDao().insertWord(new Word(18, "Red Kangaroo", R.drawable.red_kangaroo, "Bigurida", "animal"));
-        db.wordDao().insertWord(new Word(27, "Lizard", R.drawable.lizard, "Bungarrah", "animal"));
-        db.wordDao().insertWord(new Word(38, "Bird", R.drawable.bird, "Djert", "animal"));
-        db.wordDao().insertWord(new Word(39, "Grasshoper", R.drawable.grasshopper, "Djidaarly", "animal"));
-        db.wordDao().insertWord(new Word(40, "Fish", R.drawable.fish, "Djildjit", "animal"));
-        db.wordDao().insertWord(new Word(47, "Snake", R.drawable.snake, "Dugatch", "animal"));
-        db.wordDao().insertWord(new Word(49, "Parrot", R.drawable.parrot, "Dumarlark", "animal"));
-        db.wordDao().insertWord(new Word(50, "Dog", R.drawable.dog, "Dwert", "animal"));
-        db.wordDao().insertWord(new Word(54, "Duck", R.drawable.duck, "Gwinnen", "animal"));
-        db.wordDao().insertWord(new Word(79, "Owl", R.drawable.owl, "Koobeeaju", "animal"));
-        db.wordDao().insertWord(new Word(82, "Sheep", R.drawable.sheep, "Kookanjerrie", "animal"));
-        db.wordDao().insertWord(new Word(84, "Magpie", R.drawable.magpie, "Koolbardie", "animal"));
-        db.wordDao().insertWord(new Word(86, "Possum", R.drawable.possum, "Koomal", "animal"));
-        db.wordDao().insertWord(new Word(116, "Horse", R.drawable.horse, "Ngoort", "animal"));
-        db.wordDao().insertWord(new Word(127, "Flies", R.drawable.flies, "Noort", "animal"));
-        db.wordDao().insertWord(new Word(130, "Echidna", R.drawable.echidna, "Nyingarn", "animal"));
-        db.wordDao().insertWord(new Word(134, "Emu", R.drawable.emu, "Waitch/Waitj", "animal"));
-        db.wordDao().insertWord(new Word(139, "Crow", R.drawable.crow, "Warrdong", "animal"));
-        db.wordDao().insertWord(new Word(141, "Rabbit", R.drawable.rabbit, "Wilbra", "animal"));
-        db.wordDao().insertWord(new Word(144, "Turtle", R.drawable.turtle, "Yarginy", "animal"));
-        db.wordDao().insertWord(new Word(158, "Spiders", R.drawable.spiders, "Kar", "animal"));
+        db.wordDao().insertWord(new Word(9, "Pig", R.drawable.pig, "Beark", "Animal"));
+        db.wordDao().insertWord(new Word(16, "Ant", R.drawable.ant, "Bidit", "Animal"));
+        db.wordDao().insertWord(new Word(17, "Gecko", R.drawable.gecko, "Bidjul", "Animal"));
+        db.wordDao().insertWord(new Word(18, "Red Kangaroo", R.drawable.red_kangaroo, "Bigurida", "Animal"));
+        db.wordDao().insertWord(new Word(27, "Lizard", R.drawable.lizard, "Bungarrah", "Animal"));
+        db.wordDao().insertWord(new Word(38, "Bird", R.drawable.bird, "Djert", "Animal"));
+        db.wordDao().insertWord(new Word(39, "Grasshoper", R.drawable.grasshopper, "Djidaarly", "Animal"));
+        db.wordDao().insertWord(new Word(40, "Fish", R.drawable.fish, "Djildjit", "Animal"));
+        db.wordDao().insertWord(new Word(47, "Snake", R.drawable.snake, "Dugatch", "Animal"));
+        db.wordDao().insertWord(new Word(49, "Parrot", R.drawable.parrot, "Dumarlark", "Animal"));
+        db.wordDao().insertWord(new Word(50, "Dog", R.drawable.dog, "Dwert", "Animal"));
+        db.wordDao().insertWord(new Word(54, "Duck", R.drawable.duck, "Gwinnen", "Animal"));
+        db.wordDao().insertWord(new Word(79, "Owl", R.drawable.owl, "Koobeeaju", "Animal"));
+        db.wordDao().insertWord(new Word(82, "Sheep", R.drawable.sheep, "Kookanjerrie", "Animal"));
+        db.wordDao().insertWord(new Word(84, "Magpie", R.drawable.magpie, "Koolbardie", "Animal"));
+        db.wordDao().insertWord(new Word(86, "Possum", R.drawable.possum, "Koomal", "Animal"));
+        db.wordDao().insertWord(new Word(116, "Horse", R.drawable.horse, "Ngoort", "Animal"));
+        db.wordDao().insertWord(new Word(127, "Flies", R.drawable.flies, "Noort", "Animal"));
+        db.wordDao().insertWord(new Word(130, "Echidna", R.drawable.echidna, "Nyingarn", "Animal"));
+        db.wordDao().insertWord(new Word(134, "Emu", R.drawable.emu, "Waitch/Waitj", "Animal"));
+        db.wordDao().insertWord(new Word(139, "Crow", R.drawable.crow, "Warrdong", "Animal"));
+        db.wordDao().insertWord(new Word(141, "Rabbit", R.drawable.rabbit, "Wilbra", "Animal"));
+        db.wordDao().insertWord(new Word(144, "Turtle", R.drawable.turtle, "Yarginy", "Animal"));
+        db.wordDao().insertWord(new Word(158, "Spiders", R.drawable.spiders, "Kar", "Animal"));
         db.wordDao().insertWord(new Word(12, "Nails", R.drawable.nails, "Beerr", "Body Part"));
         db.wordDao().insertWord(new Word(30, "Ribs", R.drawable.ribs, "Coong", "Body Part"));
         db.wordDao().insertWord(new Word(31, "Heart", R.drawable.heart, "Coort", "Body Part"));
@@ -226,7 +221,7 @@ public class Warehouse {
         db.wordDao().insertWord(new Word(68, "Anger/Angry", R.drawable.anger, "Karrung", "Emotion"));
         db.wordDao().insertWord(new Word(69, "Mad", R.drawable.mad, "Kart Warrah", "Emotion"));
         db.wordDao().insertWord(new Word(155, "Happy", R.drawable.happy, "Djerap-Djerap", "Emotion"));
-        db.wordDao().insertWord(new Word(167, "Jealou", R.drawable.jealous, "Mirn", "Emotion"));
+        db.wordDao().insertWord(new Word(167, "Jealous", R.drawable.jealous, "Mirn", "Emotion"));
         db.wordDao().insertWord(new Word(173, "Cry", R.drawable.cry, "Ngay", "Emotion"));
         db.wordDao().insertWord(new Word(29, "Uncle", R.drawable.uncle, "Conk", "Family"));
         db.wordDao().insertWord(new Word(35, "GrandmOther", R.drawable.grandmother, "Demma", "Family"));

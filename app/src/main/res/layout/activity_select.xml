@@ -7,6 +7,7 @@
     android:background="@color/appBackground"
     tools:context=".activity.SelectActivity"
     tools:ignore="PrivateResource">
+
     <Button
         android:id="@+id/select_sentence"
         android:layout_width="300dp"
@@ -15,6 +16,7 @@
         android:background="@drawable/button_style"
         android:text="SENTENCE"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/select_text" />
@@ -27,6 +29,7 @@
         android:background="@drawable/button_style"
         android:text="MISSING WORD"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/select_sentence" />
@@ -39,6 +42,7 @@
         android:background="@drawable/button_style"
         android:text="SELECT PAIRS"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/select_missing" />
@@ -47,7 +51,7 @@
         android:id="@+id/select_text"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/button_style"
         android:text="TEXT"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -59,7 +63,7 @@
         android:id="@+id/select_pctionary"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="150dp"
         android:background="@drawable/button_style"
         android:text="PICTIONARY"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
